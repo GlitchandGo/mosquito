@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mosquito BB Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO: Insert favicon below -->
+    <link rel="icon" href="mosquitoq.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <!-- TODO: Insert your logo image here -->
+            <img src="mosquito.png" alt="Mosquito Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" onclick="showPage('home')">Home</a></li>
+            <li><a href="#shop" onclick="showPage('shop')">Shop</a></li>
+            <li><a href="#support" onclick="showPage('support')">Support</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Homepage -->
+        <section id="home" class="page active">
+            <div class="hero-area">
+                <!-- TODO: Add your main Mosquito image -->
+                <img src="mosquitogun.jpg" alt="Mosquito BB Gun" class="hero-img">
+                <!-- TODO: Add the video demo file below -->
+                <video controls class="demo-video">
+                    <source src="demo_video_placeholder.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <h1>Welcome to Mosquito BBs!</h1>
+            <!-- TODO: Fill in about section below -->
+            <section class="about-section">
+                <h2>About Mosquito BBs</h2>
+                <p>
+                    <!-- Add your detailed story and info here! -->
+                    Mosquito BBs are fully 3D printed mini BB guns, available in different colors. 
+                    Weak but super fun for casual play! See our shop for refills and accessories.
+                </p>
+            </section>
+            <div class="disclaimer">
+                <strong>Safety Disclaimer:</strong> Using Mosquito BB guns in public places is strictly frowned upon and may lead to trouble. Always use safely and responsibly!
+            </div>
+        </section>
+
+        <!-- Shop Page -->
+        <section id="shop" class="page">
+            <h1>Shop</h1>
+            <form id="shopForm">
+                <!-- Guns row -->
+                <div class="shop-row">
+                    <h2>Guns</h2>
+                    <div class="product-list">
+                        <div class="product-card">
+                            <img src="mosquito_white_placeholder.jpg" alt="Mosquito (White)">
+                            <div class="product-info">
+                                <span>Mosquito (White)</span>
+                                <span class="product-price">$2.99</span>
+                                <button type="button" onclick="addToCart('gun', 'Mosquito (White)', 2.99)">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="mosquito_black_placeholder.jpg" alt="Mosquito (Black)">
+                            <div class="product-info">
+                                <span>Mosquito (Black)</span>
+                                <span class="product-price">$2.99</span>
+                                <button type="button" onclick="addToCart('gun', 'Mosquito (Black)', 2.99)">Add to Cart</button>
+                            </div>
+                        </div>
+                        <!-- TODO: Add more Mosquito variants here if needed -->
+                    </div>
+                </div>
+                <!-- Bottles row -->
+                <div class="shop-row">
+                    <h2>Bottles</h2>
+                    <div class="product-list">
+                        <div class="product-card">
+                            <img src="bottle_white_placeholder.jpg" alt="Bottle (White)">
+                            <div class="product-info">
+                                <span>Bottle (White)</span>
+                                <span class="product-price">$0.50</span>
+                                <button type="button" onclick="showBottleOptions('Bottle (White)')">Add & Select Pellets</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="bottle_black_placeholder.jpg" alt="Bottle (Black)">
+                            <div class="product-info">
+                                <span>Bottle (Black)</span>
+                                <span class="product-price">$0.50</span>
+                                <button type="button" onclick="showBottleOptions('Bottle (Black)')">Add & Select Pellets</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Refills row -->
+                <div class="shop-row">
+                    <h2>Refills</h2>
+                    <div class="product-list">
+                        <div class="product-card">
+                            <img src="pellet_placeholder.jpg" alt="Pellet (Black)">
+                            <div class="product-info">
+                                <span>25 Pellets</span>
+                                <span class="product-price">$0.50</span>
+                                <button type="button" onclick="showRefillOptions(25, 0.50)">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="pellet_placeholder.jpg" alt="Pellet (Black)">
+                            <div class="product-info">
+                                <span>50 Pellets</span>
+                                <span class="product-price">$1.00</span>
+                                <button type="button" onclick="showRefillOptions(50, 1.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="pellet_placeholder.jpg" alt="Pellet (Black)">
+                            <div class="product-info">
+                                <span>100 Pellets</span>
+                                <span class="product-price">$2.00</span>
+                                <button type="button" onclick="showRefillOptions(100, 2.00)">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart summary -->
+                <div class="cart-area" id="cart">
+                    <h2>Your Cart</h2>
+                    <ul id="cartList"></ul>
+                    <div id="cartTotal"></div>
+                    <button type="button" id="checkoutBtn" onclick="showCheckout()" style="display:none;">Checkout</button>
+                </div>
+            </form>
+
+            <!-- Bottle Pellet Selection Modal -->
+            <div id="bottleModal" class="modal">
+                <div class="modal-content">
+                    <span id="bottleModalName"></span>
+                    <label>Pellet Quantity:
+                        <select id="bottlePelletQty">
+                            <option value="25" data-price="0.50">25 (+$0.50)</option>
+                            <option value="50" data-price="1.00">50 (+$1.00)</option>
+                            <option value="100" data-price="2.00">100 (+$2.00)</option>
+                        </select>
+                    </label>
+                    <br>
+                    <label>Pellet Color:
+                        <select id="bottlePelletColor">
+                            <option>Black</option>
+                            <option>White</option>
+                            <!-- TODO: Add more colors if needed -->
+                        </select>
+                    </label>
+                    <br>
+                    <button onclick="addBottleWithPellets()">Add to Cart</button>
+                    <button onclick="closeModal('bottleModal')">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Refill Pellet Color Modal -->
+            <div id="refillModal" class="modal">
+                <div class="modal-content">
+                    <span id="refillModalName"></span>
+                    <label>Pellet Color:
+                        <select id="refillPelletColor">
+                            <option>Black</option>
+                            <option>White</option>
+                            <!-- TODO: Add more colors if needed -->
+                        </select>
+                    </label>
+                    <br>
+                    <button onclick="addRefillToCart()">Add to Cart</button>
+                    <button onclick="closeModal('refillModal')">Cancel</button>
+                </div>
+            </div>
+
+            <!-- Checkout Modal -->
+            <div id="checkoutModal" class="modal">
+                <div class="modal-content">
+                    <h2>Checkout</h2>
+                    <form id="checkoutForm">
+                        <div id="checkoutPriceLine"></div>
+                        <label>Legal Name:<br>
+                            <input type="text" id="legalName" required>
+                        </label><br>
+                        <label>Payment Method:<br>
+                            <select id="paymentMethod" onchange="toggleDeliveryFields()">
+                                <option value="meetup">In Person Meetup</option>
+                                <option value="cashapp">CashApp</option>
+                            </select>
+                        </label>
+                        <div id="addressFields" style="display:none;">
+                            <label>Full Mailing Address:<br>
+                                <textarea id="mailingAddress" rows="2" required></textarea>
+                            </label>
+                        </div>
+                        <button type="button" onclick="completeCheckout()">Complete Purchase</button>
+                        <button type="button" onclick="closeModal('checkoutModal')">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Page -->
+        <section id="support" class="page">
+            <h1>Support</h1>
+            <section class="faq-section">
+                <h2>Common Problems &amp; Questions</h2>
+                <ul class="faq-list">
+                    <li>
+                        <button type="button" onclick="toggleFaq('faq1')">How do I reload it?</button>
+                        <div class="faq-answer" id="faq1"> <!-- TODO: Fill in your answer --> </div>
+                    </li>
+                    <li>
+                        <button type="button" onclick="toggleFaq('faq2')">It won't shoot?</button>
+                        <div class="faq-answer" id="faq2"> <!-- TODO: Fill in your answer --> </div>
+                    </li>
+                    <!-- TODO: Add more FAQ items as desired -->
+                </ul>
+                <div class="faq-contact">
+                    Not answering your questions? Email us at
+                    <a href="mailto:support.mosquito-bb@outlook.com">support.mosquito-bb@outlook.com</a>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 Mosquito BBs - All Rights Reserved
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
