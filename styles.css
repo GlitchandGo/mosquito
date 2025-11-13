@@ -1,0 +1,280 @@
+:root {
+    --primary: #18baba;
+    --secondary: #35bbc7;
+    --accent: #165f5f;
+    --background: #f7fdfa;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--background);
+    color: var(--accent);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    background: var(--primary);
+    padding: 8px 16px;
+    box-shadow: 0 2px 8px rgba(24,186,186,0.1);
+}
+
+.nav-logo {
+    margin-right: 18px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-right: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+main {
+    max-width: 900px;
+    margin: 30px auto 20px;
+    padding: 8px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.hero-area {
+    text-align: center;
+}
+
+.hero-img {
+    width: 220px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 14px rgba(24,186,186,0.23);
+}
+
+.demo-video {
+    width: 330px;
+    max-width: 100%;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(24,186,186,0.18);
+}
+
+h1, h2 {
+    color: var(--accent);
+}
+
+.about-section, .disclaimer {
+    background: #e2f7f7;
+    border-left: 4px solid var(--primary);
+    padding: 14px 16px;
+    margin-top: 16px;
+    margin-bottom: 14px;
+    border-radius: 9px;
+}
+
+.disclaimer {
+    background: #ffecec;
+    border-color: #b41a1a;
+    color: #b41a1a;
+    font-weight: 600;
+}
+
+.shop-row {
+    margin-bottom: 25px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+.product-card {
+    background: #d9f4f6;
+    border-radius: 10px;
+    padding: 13px 10px;
+    box-shadow: 0 2px 10px rgba(54,187,199,0.10);
+    width: 145px;
+}
+
+.product-card img {
+    width: 100px;
+    height: 66px;
+    object-fit: contain;
+    margin-bottom: 7px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #bdf1ef;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.product-info span {
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.product-price {
+    font-weight: bold;
+    color: var(--accent);
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 6px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: var(--secondary);
+}
+
+.cart-area {
+    background: #d6eef0;
+    border-radius: 7px;
+    padding: 9px 10px;
+    margin-top: 18px;
+    box-shadow: 0 1px 8px rgba(54,187,199,0.04);
+}
+
+.cart-area h2 {
+    margin-top: 0;
+}
+
+#cartList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#cartList li {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+#cartTotal {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 7px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    overflow: auto;
+    background: rgba(24,186,186,0.25);
+}
+
+.modal-content {
+    background: #f7fdfa;
+    margin: 8vh auto;
+    padding: 28px 22px;
+    border-radius: 11px;
+    max-width: 330px;
+    box-shadow: 0 8px 24px rgba(24,186,186,0.22);
+    position: relative;
+}
+
+.faq-section {
+    background: #e2f7f7;
+    border-radius: 9px;
+    padding: 15px 17px;
+    margin-top: 12px;
+}
+
+.faq-list {
+    list-style: none;
+    padding: 0;
+}
+
+.faq-list li {
+    margin-bottom: 14px;
+}
+
+.faq-list button {
+    background: var(--accent);
+    color: #fff;
+    font-size: 1rem;
+    padding: 7px 13px;
+    border-radius: 3px;
+}
+
+.faq-answer {
+    background: #fff;
+    color: #214040;
+    display: none;
+    margin-top: 5px;
+    padding: 7px 12px;
+    border-radius: 4px;
+    border-left: 3px solid var(--primary);
+}
+
+.faq-contact {
+    margin-top: 19px;
+    font-size: 1.05rem;
+}
+
+footer {
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    padding: 16px 0 11px;
+    font-size: 1rem;
+    margin-top: 45px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+@media (max-width: 700px) {
+    main {
+        max-width: 99vw;
+        padding: 4px;
+    }
+    .product-list {
+        flex-direction: column;
+        gap: 13px;
+    }
+    .modal-content {
+        padding: 16px 7px;
+    }
+}
